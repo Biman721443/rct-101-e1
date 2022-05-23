@@ -1,15 +1,17 @@
-import React from "react";
-import styles from "./counter.module.css";
+import React, { useState } from "react";
+import styles from "./Counter.module.css";
 
 const Counter = () => {
+  const [counter,setCounter] = useState(0)
   // sample value to be replaced
-  let count = 0;
+  // let count = 0;
   // NOTE: do not delete `data-cy` key value pair
   return (
     <div className={styles.counter}>
-      <button data-cy="task-counter-increment-button"></button>
-      <span data-cy="task-counter-value">{count}</span>
-      <button data-cy="task-counter-decrement-button"></button>
+      <button data-cy="task-counter-increment-button" onClick={()=>{setCounter(counter+1)}} style={{backgroundColor:"lightblue"}}>+</button>
+      <span data-cy="task-counter-value">        {counter}        </span>
+      <button data-cy="task-counter-decrement-button" onClick={()=>{
+        if(counter>0){setCounter(counter-1)}}} style={{backgroundColor:"lightblue"}}>-</button>
     </div>
   );
 };

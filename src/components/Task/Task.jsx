@@ -1,16 +1,19 @@
-import React from "react";
-import styles from "./task.module.css";
+import React, { useState } from "react";
+import styles from "./counter.module.css";
 
-const Task = () => {
+const Counter = () => {
+  const [counter,setCounter] = useState(0)
+  // sample value to be replaced
+  // let count = 0;
   // NOTE: do not delete `data-cy` key value pair
   return (
-    <li data-cy="task" className={styles.task}>
-      <input type="checkbox" data-cy="task-checkbox" />
-      <div data-cy="task-text"></div>
-      {/* Counter here */}
-      <button data-cy="task-remove-button"></button>
-    </li>
+    <div className={styles.counter}>
+      <button data-cy="task-counter-increment-button" onClick={()=>{setCounter(counter+1)}} style={{backgroundColor:"lightblue"}}>+</button>
+      <span data-cy="task-counter-value">        {counter}        </span>
+      <button data-cy="task-counter-decrement-button" onClick={()=>{
+        if(counter>0){setCounter(counter-1)}}} style={{backgroundColor:"lightblue"}}>-</button>
+    </div>
   );
 };
 
-export default Task;
+export default Counter;
